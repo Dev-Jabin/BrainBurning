@@ -10,30 +10,63 @@
  * 不能被其他自然数整除的数
  */
 
-function findPrime1($num)
+function isPrime1($num)
 {
-	$oddArr = array();
-	$cell = 3;
-	if ($num<$cell) {
-		return array();
+	if ($num<2) {
+		return false;
 	}
-	while ($cell <= $num) {
-		array_push($oddArr, $cell);
-		foreach ($oddArr as $val) {
-			if ($cell != $val && ($cell%$val)==0) {
-				$delKey = array_search($cell, $oddArr);
-				unset($oddArr[$delKey]);
-				continue;
-			}
+
+	for ($i=2; $i < $num; $i++) { 
+		if ($num%$i == 0) {
+			return false;
 		}
-		// 过滤偶数
-		$cell += 2;
 	}
-	return $oddArr;
+	return true;
+}
+
+function isPrime2($num)
+{
+	if ($num == 1) {
+		return false;
+	}elseif ($num == 2) {
+		return true;
+	}
+
+	for ($i=3; $i < $num; $i +=2) {
+		if ($num%2==0) {
+			return false;
+		}
+		if (($num%$i)==0)
+			return false;
+	}
+	return true;
+}
+
+function isPrime3($num)
+{
+
+}
+
+function findPrime($num)
+{
+	$primeArr = array();
+	$tar=1;
+	while ($tar <= $num) {
+		if (isPrime2($tar)) {
+			array_push($primeArr, $tar);
+		}
+		$tar++;
+	}
+	return $primeArr;
 }
 
 $num = 21;
-$primeArr = findPrime1($num);
+$primeArr = findPrime($num);
 foreach ($primeArr as $val) {
 	echo "$val ";
 }
+echo "\n";
+// $primeArr2 = findPrime2($num);
+// foreach ($primeArr2 as $val) {
+// 	echo "$val ";
+// }
