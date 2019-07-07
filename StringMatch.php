@@ -88,6 +88,29 @@ function findStrFirIndex($tempStr,$tarStr){
 	}
 }
 
+//字符串反转
+function reverseStr1($str)
+{
+	$resStr='';
+	$len = strlen($str);
+	for ($i=$len-1; $i >= 0 ; $i--) { 
+		$resStr .= $str[$i];
+	}
+	echo "$resStr\n";
+	return $resStr;
+}
+
+function reverseStr2($str)
+{
+	$resStr='';
+	$len = strlen($str);
+	for ($i=$len-1; $i >= 0 ; $i--) { 
+		$resStr .= substr($str, $i, 1);
+	}
+	echo "$resStr\n";
+	return $resStr;
+}
+
 $tarStr = 'ab';
 $tempStr = 'scdabdabes';
 findStrFirstIndex($tempStr,$tarStr);
@@ -95,4 +118,5 @@ findStrLastIndex($tempStr,$tarStr);
 findStrFirst($tempStr,$tarStr);
 findStrLast($tempStr,$tarStr);
 findStrFirIndex($tempStr,$tarStr);
-
+reverseStr1($tempStr);
+reverseStr2($tempStr);
